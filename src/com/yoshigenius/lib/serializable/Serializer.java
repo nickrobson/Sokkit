@@ -9,7 +9,8 @@ public class Serializer {
     public static final String SEPARATOR_INFO = ";";
     
     public static String serialize( Serializable s ) {
-        return s.getClass().getPackage().getName() + "." + s.getClass().getSimpleName() + Serializer.SEPARATOR_CLASS + s.serialize();
+        return s.getClass().getPackage().getName() + "." + s.getClass().getSimpleName() + Serializer.SEPARATOR_CLASS
+                + s.serialize();
     }
     
     public static Serializable deserialize( String s ) {
@@ -33,8 +34,8 @@ public class Serializer {
                 inst = ser.newInstance();
             }
             return inst;
-        } catch ( ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException
-                | IllegalArgumentException | InvocationTargetException e ) {
+        } catch ( ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException
+                | IllegalAccessException | IllegalArgumentException | InvocationTargetException e ) {
             e.printStackTrace();
         }
         return null;

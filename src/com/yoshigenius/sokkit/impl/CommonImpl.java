@@ -22,7 +22,8 @@ public final class CommonImpl {
                         if ( channel.getAuth() != null ) {
                             String username = reader.readLine();
                             String password = reader.readLine();
-                            if ( !( channel.getAuth().getUsername().equals( username ) && channel.getAuth().getPassword().equals( password ) ) ) {
+                            if ( !( channel.getAuth().getUsername().equals( username ) && channel.getAuth()
+                                    .getPassword().equals( password ) ) ) {
                                 badAuth = true;
                             } else {
                                 if ( channel.getAuth().requireSalt() ) {
@@ -38,7 +39,8 @@ public final class CommonImpl {
                         } else {
                             List<String> lines = new LinkedList<>();
                             String line;
-                            while ( ( line = reader.readLine() ) != null && !line.equals( SokkitProtocol.SIG_END_SOKKIT ) && !line.isEmpty() ) {
+                            while ( ( line = reader.readLine() ) != null
+                                    && !line.equals( SokkitProtocol.SIG_END_SOKKIT ) && !line.isEmpty() ) {
                                 lines.add( line );
                             }
                             if ( line.equals( SokkitProtocol.SIG_END_SOKKIT ) ) {
