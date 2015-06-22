@@ -1,4 +1,4 @@
-package com.yoshigenius.sokkit.api;
+package me.nickrobson.sokkit.api;
 
 import java.net.Socket;
 

@@ -1,4 +1,4 @@
-package com.yoshigenius.sokkit;
+package me.nickrobson.sokkit;
 
 /**
  * This class does nothing; it's just here to describe the protocol.

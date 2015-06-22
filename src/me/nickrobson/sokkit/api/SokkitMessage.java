@@ -1,11 +1,11 @@
-package com.yoshigenius.sokkit.api;
+package me.nickrobson.sokkit.api;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.yoshigenius.lib.serializable.Serializable;
-import com.yoshigenius.lib.serializable.Serializer;
+import me.nickrobson.lib.serializable.Serializable;
+import me.nickrobson.lib.serializable.Serializer;
 
 public final class SokkitMessage {
     

@@ -1,4 +1,4 @@
-package com.yoshigenius.sokkit;
+package me.nickrobson.sokkit;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -8,13 +8,11 @@ import java.nio.file.Files;
 import java.util.LinkedList;
 import java.util.List;
 
+import me.nickrobson.sokkit.SokkitAPI.SokkitHandler;
 import net.md_5.bungee.api.plugin.Plugin;
-
-import com.yoshigenius.sokkit.SokkitAPI.SokkitHandler;
 
 public class SokkitBungee extends Plugin implements SokkitHandler {
     
-    private String apikey;
     private List<String> allowedIPs = new LinkedList<>();
     
     private boolean disabled = false;
@@ -27,15 +25,15 @@ public class SokkitBungee extends Plugin implements SokkitHandler {
                 BufferedReader reader = Files.newBufferedReader( file.toPath(), StandardCharsets.UTF_8 );
                 String line = null;
                 while ( ( line = reader.readLine() ) != null ) {
-                    if ( line.startsWith( "apikey=" ) ) {
-                        this.apikey = line.replaceFirst( "apikey=", "" );
-                    } else if ( line.startsWith( "allowedip=" ) ) {
+                    if ( line.startsWith( "allowedip=" ) ) {
                         this.allowedIPs.add( line.replaceFirst( "allowedip=", "" ) );
                     }
                 }
+                if ( this.allowedIPs.isEmpty() ) {
+                    this.allowedIPs = SokkitAPI.ALL_IPS_ALLOWED;
+                }
             }
-        } catch ( IOException ignored ) {
-        }
+        } catch ( IOException ignored ) {}
         SokkitAPI.handler = this;
     }
     
@@ -50,11 +48,6 @@ public class SokkitBungee extends Plugin implements SokkitHandler {
                 }
             }
         }
-    }
-    
-    @Override
-    public String getAPIKey() {
-        return this.apikey;
     }
     
     @Override

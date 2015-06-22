@@ -1,13 +1,12 @@
-package com.yoshigenius.sokkit;
+package me.nickrobson.sokkit;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.LinkedList;
 import java.util.List;
 
-import org.bukkit.plugin.java.JavaPlugin;
+import me.nickrobson.sokkit.SokkitAPI.SokkitHandler;
 
-import com.yoshigenius.sokkit.SokkitAPI.SokkitHandler;
+import org.bukkit.plugin.java.JavaPlugin;
 
 public class SokkitBukkit extends JavaPlugin implements SokkitHandler {
     
@@ -17,19 +16,14 @@ public class SokkitBukkit extends JavaPlugin implements SokkitHandler {
             this.saveDefaultConfig();
         }
         boolean disabled = false;
-        String sport = this.getConfig().getString( "port", "8080" );
+        int port = this.getConfig().getInt( "port", 25600 );
         try {
-            int port = Integer.parseInt( sport );
             if ( port < 0 || port > 0xFFFF ) {
-                this.getLogger().severe( "Port supplied in config (" + sport + ") must be between 0 and 0xFFFF." );
+                this.getLogger().severe( "Port supplied in config (" + port + ") must be between 0 and 0xFFFF." );
                 disabled = true;
             }
         } catch ( Exception ex ) {
-            this.getLogger().severe( "Port supplied in config (" + sport + ") is not an integer." );
-            disabled = true;
-        }
-        if ( this.getAPIKey().isEmpty() || this.getAPIKey().equals( "NOT SET" ) ) {
-            this.getLogger().severe( this.getAPIKey() + " is not a valid API key." );
+            this.getLogger().severe( "Port supplied in config (" + port + ") is not an integer." );
             disabled = true;
         }
         if ( this.getAllowedIPs() == null || this.getAllowedIPs().isEmpty() ) {
@@ -57,14 +51,9 @@ public class SokkitBukkit extends JavaPlugin implements SokkitHandler {
     }
     
     @Override
-    public String getAPIKey() {
-        return this.getConfig().getString( "apikey", "NOT SET" );
-    }
-    
-    @Override
     public List<String> getAllowedIPs() {
         List<String> ips = this.getConfig().getStringList( "allowed-ips" );
-        return ips == null ? new LinkedList<String>() : ips;
+        return ips == null ? SokkitAPI.ALL_IPS_ALLOWED : ips;
     }
     
     @Override

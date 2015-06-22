@@ -1,4 +1,4 @@
-package com.yoshigenius.sokkit;
+package me.nickrobson.sokkit;
 
 import java.io.IOException;
 import java.net.Proxy;
@@ -8,22 +8,21 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import me.nickrobson.sokkit.api.SokkitCallback;
+import me.nickrobson.sokkit.api.SokkitChannel;
+import me.nickrobson.sokkit.api.SokkitClient;
+import me.nickrobson.sokkit.api.SokkitMessage;
+import me.nickrobson.sokkit.api.SokkitServer;
+import me.nickrobson.sokkit.impl.SokkitClientImpl;
+import me.nickrobson.sokkit.impl.SokkitServerImpl;
+
 import com.google.common.collect.ImmutableList;
-import com.yoshigenius.sokkit.api.SokkitCallback;
-import com.yoshigenius.sokkit.api.SokkitChannel;
-import com.yoshigenius.sokkit.api.SokkitClient;
-import com.yoshigenius.sokkit.api.SokkitMessage;
-import com.yoshigenius.sokkit.api.SokkitServer;
-import com.yoshigenius.sokkit.impl.SokkitClientImpl;
-import com.yoshigenius.sokkit.impl.SokkitServerImpl;
 
 public final class SokkitAPI {
     
     public static final List<String> ALL_IPS_ALLOWED = ImmutableList.<String> of();
     
     protected static interface SokkitHandler {
-        
-        String getAPIKey();
         
         default List<String> getAllowedIPs() {
             return SokkitAPI.ALL_IPS_ALLOWED;

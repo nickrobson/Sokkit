@@ -1,4 +1,4 @@
-package com.yoshigenius.sokkit.impl;
+package me.nickrobson.sokkit.impl;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,12 +7,12 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import com.yoshigenius.sokkit.SokkitAPI;
-import com.yoshigenius.sokkit.SokkitProtocol;
-import com.yoshigenius.sokkit.api.SokkitAuth;
-import com.yoshigenius.sokkit.api.SokkitChannel;
-import com.yoshigenius.sokkit.api.SokkitMessage;
-import com.yoshigenius.sokkit.api.SokkitServer;
+import me.nickrobson.sokkit.SokkitAPI;
+import me.nickrobson.sokkit.SokkitProtocol;
+import me.nickrobson.sokkit.api.SokkitAuth;
+import me.nickrobson.sokkit.api.SokkitChannel;
+import me.nickrobson.sokkit.api.SokkitMessage;
+import me.nickrobson.sokkit.api.SokkitServer;
 
 public class SokkitServerImpl implements SokkitServer {
     
@@ -24,8 +24,7 @@ public class SokkitServerImpl implements SokkitServer {
         Runnable bootstrapRunnable = ( ) -> {
             try {
                 new WorkerThread( server.accept() ).start();
-            } catch ( Exception ex ) {
-            }
+            } catch ( Exception ex ) {}
         };
         Thread bootstrapThread = new Thread( bootstrapRunnable );
         bootstrapThread.start();

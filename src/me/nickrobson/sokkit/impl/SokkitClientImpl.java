@@ -1,4 +1,4 @@
-package com.yoshigenius.sokkit.impl;
+package me.nickrobson.sokkit.impl;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,10 +8,10 @@ import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.Socket;
 
-import com.yoshigenius.sokkit.SokkitAPI;
-import com.yoshigenius.sokkit.SokkitProtocol;
-import com.yoshigenius.sokkit.api.SokkitClient;
-import com.yoshigenius.sokkit.api.SokkitMessage;
+import me.nickrobson.sokkit.SokkitAPI;
+import me.nickrobson.sokkit.SokkitProtocol;
+import me.nickrobson.sokkit.api.SokkitClient;
+import me.nickrobson.sokkit.api.SokkitMessage;
 
 public class SokkitClientImpl implements SokkitClient {
     
